@@ -2,8 +2,9 @@ package model;
 
 public class Cliente {
 
-    private Cliente cliente;
-    private String tipoDeSeguro;
-    private double valorCobertura;
-    boolean ativa;
+    private int id;
+    private String nome;
+    private String cpf;
+    private double saldo;
+    private Veiculo tipoVeiculo;
 }
