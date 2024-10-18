@@ -1,17 +1,59 @@
 package org.example;
+import mock.*;
+import model.*;
+import service.*;
+import factory.*;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        // Criar instâncias das classes Mock
+        ClienteDAOMock clienteDAOMock = new ClienteDAOMock();
+        SeguroDAOMock seguroDAOMock = new SeguroDAOMock();
+        FuncionarioDAOMock funcionarioDAOMock = new FuncionarioDAOMock();
+        VeiculoDAOMock veiculoDAOMock = new VeiculoDAOMock();
+        SinistroDAOMock sinistroDAOMock = new SinistroDAOMock();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        // Criar instâncias dos serviços, passando as classes Mock
+        ClienteService clienteService = new ClienteService(clienteDAOMock);
+        SeguroService seguroService = new SeguroService(seguroDAOMock);
+        FuncionarioService funcionarioService = new FuncionarioService(funcionarioDAOMock);
+        VeiculoService veiculoService = new VeiculoService(veiculoDAOMock);
+        SinistroService sinistroService = new SinistroService(sinistroDAOMock);
+
+        // Criar objetos para testar
+        Cliente cliente = EntidadeFactory.criarCliente("João Silva", "123.456.789-00");
+        Veiculo veiculo = EntidadeFactory.criarVeiculo("Fusca", 1970, 10000);
+        Funcionario funcionario = EntidadeFactory.criarFuncionario("Maria Souza", "Corretora", 3000);
+        Sinistro sinistro = EntidadeFactory.criarSinistro("Acidente na estrada", 5000);
+
+        // Testar o registro de clientes
+        clienteService.registrarCliente(cliente);
+        System.out.println("Clientes registrados: " + clienteDAOMock.listarClientes().size());
+
+        // Testar o registro de veículos
+        veiculoService.registrarVeiculo(veiculo);
+        System.out.println("Veículos registrados: " + veiculoDAOMock.listarVeiculos().size());
+
+        // Testar o registro de seguros
+        Seguro seguro = EntidadeFactory.criarSeguro(cliente, veiculo);
+        seguroService.registrarSeguro(seguro);
+        System.out.println("Seguros registrados: " + seguroDAOMock.listarSeguros().size());
+
+        // Testar o registro de funcionários
+        FuncionarioService.registrarFuncionario(funcionario);
+        System.out.println("Funcionários registrados: " + funcionarioDAOMock.listarFuncionarios().size());
+
+
+        // Testar o registro de sinistros
+        sinistroService.registrarSinistro(sinistro);
+        System.out.println("Sinistros registrados: " + sinistroDAOMock.listarSinistros().size());
+
+        // Testar o cálculo de bônus do funcionário
+        double bonus = funcionarioService.calcularBonus(funcionario);
+        System.out.println("Bônus calculado para " + funcionario.getNome() + ": " + bonus);
+
+        // Testar o cálculo de indenização do sinistro
+        double indenizacao = sinistroService.calcularIndenizacao(sinistro);
+        System.out.println("Indenização calculada para sinistro: " + indenizacao);
     }
 }

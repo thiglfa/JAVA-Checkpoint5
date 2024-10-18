@@ -1,5 +1,4 @@
 package dao;
-
 import model.Funcionario;
 
 import java.util.List;
@@ -11,5 +10,3 @@ public interface FuncionarioDAO {
     void atualizarFuncionario(Funcionario funcionario);
     void removerFuncionario(int id);
 }
-
-
