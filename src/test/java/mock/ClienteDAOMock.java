@@ -28,14 +28,11 @@ public class ClienteDAOMock implements ClienteDAO {
 
     @Override
     public void atualizarCliente(Cliente cliente) {
-        // Implementar lógica de atualização
+        //
     }
 
     @Override
     public void removerCliente(int id) {
-        // Implementar lógica de remoção
+        //
     }
 }
-
-// Faça o mesmo para as classes SeguroDAOMock, FuncionarioDAOMock, VeiculoDAOMock, SinistroDAOMock
-
