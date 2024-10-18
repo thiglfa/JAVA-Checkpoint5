@@ -29,5 +29,12 @@ public class Seguro {
         // Exemplo simples de cobertura
         return tipoEvento.equalsIgnoreCase("acidente");
     }
+
+    @Override
+    public String toString() {
+        return "Seguro [Cliente: " + cliente.getNome() +
+                ", Veículo: " + veiculo.getModelo() +
+                ", Ano: " + veiculo.getAnoFabricacao() + "]";
+    }
 }
 
