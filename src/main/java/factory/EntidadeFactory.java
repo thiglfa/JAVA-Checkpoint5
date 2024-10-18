@@ -1,9 +1,6 @@
 package factory;
 
-import model.Cliente;
-import model.Funcionario;
-import model.Seguro;
-import model.Veiculo;
+import model.*;
 
 public class EntidadeFactory {
     public static Cliente criarCliente(String nome, String cpf) {
@@ -17,5 +14,14 @@ public class EntidadeFactory {
     public static Funcionario criarFuncionario(String nome, String cargo, double salario) {
         return new Funcionario(nome, cargo, salario);
     }
+
+    public static Veiculo criarVeiculo(String modelo, int ano, double valor) {
+        return new Veiculo(modelo, ano, valor);
+    }
+
+    public static Sinistro criarSinistro(String tipoEvento, double valorDanos) {
+        return new Sinistro(tipoEvento, valorDanos);
+    }
 }
+
 
