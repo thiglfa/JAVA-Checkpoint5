@@ -11,3 +11,5 @@ public interface FuncionarioDAO {
     void atualizarFuncionario(Funcionario funcionario);
     void removerFuncionario(int id);
 }
+
+
