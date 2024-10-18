@@ -5,7 +5,7 @@ import model.Funcionario;
 
 public class FuncionarioService {
     private static FuncionarioService instancia;
-    private FuncionarioDAO funcionarioDAO;
+    private static FuncionarioDAO funcionarioDAO;
 
     public FuncionarioService(FuncionarioDAO funcionarioDAO) {
         this.funcionarioDAO = funcionarioDAO;
@@ -19,7 +19,8 @@ public class FuncionarioService {
     }
 
     public static void registrarFuncionario(Funcionario funcionario) {
-
+        funcionarioDAO.adicionarFuncionario(funcionario);
+        System.out.println("Funcionários registrados: " + funcionario.getNome());
     }
 
     public double calcularBonus(Funcionario funcionario) {
@@ -28,6 +29,5 @@ public class FuncionarioService {
         return bonus;
     }
 }
-
 
 

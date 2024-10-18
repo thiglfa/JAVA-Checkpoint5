@@ -34,7 +34,7 @@ public class FuncionarioDAOMock implements FuncionarioDAO {
 
     @Override
     public void removerFuncionario(int id) {
-        // Lógica para remover funcionário
+        funcionarios.removeIf(f -> f.getId() == id); // Remove o funcionário com o ID correspondente
     }
 
     // Método para adicionar um sinistro processado por um funcionário
