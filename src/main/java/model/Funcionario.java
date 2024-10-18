@@ -12,14 +12,22 @@ public class Funcionario {
         this.salario = salario;
     }
 
-    // Métodos getters e setters
+    // Getters e Setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    public String getCargo() { return cargo; }
+    public void setCargo(String cargo) { this.cargo = cargo; }
+    public double getSalario() { return salario; }
+    public void setSalario(double salario) { this.salario = salario; }
 
+    // Exemplo de regra de negócio
     public void aumentarSalario(double percentual) {
         this.salario += this.salario * percentual / 100;
     }
 
     public double calcularBonus() {
-        return this.salario * 0.10;
+        return this.salario * 0.10; // Exemplo de cálculo de bônus de 10%
     }
 }
-
